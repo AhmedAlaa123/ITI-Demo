@@ -1,0 +1,23 @@
+﻿@model Instructor
+
+
+
+<div class="container" style="min-height:100vh">
+
+
+    <div class='row justify-content-center align-content-center'>
+        <div class="card" style="max-width:400px">
+          <img class="card-img-top align-self-center rounded-pill m-2" style="width:150px;height150px"  src="/images/Instructors/@Model.Image" alt="Card image">
+          <div class="card-body">
+            <h4 class="card-title">Name : @Model.Name</h4>
+            <p class="card-text">Salary : @Model.Salary</p>
+            <p class="card-text">Address : @Model.Address</p>
+            <p class="card-text">Department :@(Model.Department!=null? @Model.Department.Name:"N/A")</p>
+            <p class="card-text">Course : @(Model.Course!=null?Model.Course.Name:"N/A")</p>
+            <a href="/Instructor/" class="btn btn-primary">Back</a>
+           </div>
+        </div>
+    </div>
+    <a class="btn btn-success" href="/Instructor/UpdateInstructor/@Model.Id">Update</a>
+</div>
+

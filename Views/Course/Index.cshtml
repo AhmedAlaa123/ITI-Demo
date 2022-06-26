@@ -1,0 +1,32 @@
+﻿@using Day2.Models.Courses
+
+@model List<CourseInfoDTO>
+
+<div class="container">
+    <h1 class='text-success text-center mb-1'>Courses</h1>
+    <a class='btn btn-success mb-2' asp-action='CreateCourse' asp-controller='Course'>Add New Course</a>
+    <table class='table table-bordered table-hover'>
+        <tr>
+            <th>Name</th>
+            <th>Degree</th>
+            <th>Min Degree</th>
+            <th>Department</th>
+            <th></th>
+        </tr>
+
+        @foreach (CourseInfoDTO courseInfoDTO in Model)
+        {
+            <tr>
+                <td>@courseInfoDTO.Name</td>
+                <td>@courseInfoDTO.Degree</td>
+                <td>@courseInfoDTO.MinDegree</td>
+                <td>@courseInfoDTO.Department.Name</td>
+                <td><a asp-controller='course' asp-action='UpdateCourse' asp-route-id="@courseInfoDTO.Id">Details</a></td>
+            </tr>
+        }
+        
+
+    </table>
+    
+</div>
+

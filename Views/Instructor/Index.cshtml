@@ -1,0 +1,40 @@
+﻿@model ICollection<Instructor>
+
+ 
+<h1 class='text-success text-center mb-1'>Instructors</h1>
+<a asp-action='AddNewInstructor' asp-controller='Instructor' class="btn btn-success mb-2">Add New Insturctor</a>
+<table class='table table-bordered table-hover'>
+
+    <tr>
+        <th>
+            ID
+        </th>
+         <th>
+           Name
+        </th>
+         <th>
+           Salary
+        </th>
+         <th>
+            Address
+        </th>
+        <th>
+            Details
+        </th>
+    </tr>
+
+
+    @foreach(Instructor instructor in Model)
+    {
+        <tr>
+            <td>@instructor.Id</td>
+            <td>@instructor.Name</td>
+            <td>@instructor.Salary</td>
+            <td>@instructor.Address</td>
+            <td><a href="/Instructor/InstructorDetails/@instructor.Id">Details</a></td>
+        </tr>
+    }
+
+
+</table>
+

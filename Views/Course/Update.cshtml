@@ -1,0 +1,40 @@
+﻿@using Day2.Models.Courses
+@model CourseInfoDTO
+@{
+    SelectList deptItems= new SelectList(ViewBag.Deparments,"Id","Name");
+}
+
+
+<div class='container'>
+     <h1 class='text-success mb-2'>Update Course.</h1>
+
+    <form asp-action='InsertCourse' asp-controller='Course' method='post'  >
+      <div class="form-group mb-3">
+            <label asp-for="Name" ></label>
+            <input asp-for="Name"   placeholder="Course Name" class='form-control' >
+            <span asp-validation-for="Name" class='text-danger'></span>
+    
+      </div>
+     
+       <div class="form-group mb-3">
+            <label asp-for="Degree"></label>
+            <input asp-for="Degree"  class="form-control" placeholder="Degree" >
+            <span asp-validation-for="Degree" class='text-danger'></span>
+      </div>
+
+    
+        <div class="form-group mb-3">
+            <label asp-for="MinDegree" ></label>
+            <input asp-for="MinDegree" class="form-control" placeholder="Minmum Degree" >
+            <span asp-validation-for="MinDegree" class='text-danger'></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="Department.Name"></label>
+           <input asp-for="Department.Name" class='form-control' />
+        </div>
+         
+        <button type="submit" class="btn btn-success">Update</button>
+    </form>
+</div>
+

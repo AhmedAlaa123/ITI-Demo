@@ -1,0 +1,28 @@
+html {
+  font-size: 14px;
+  
+}
+
+body {
+    font-family: cursive,'Times New Roman',Tahoma,fantasy !important;
+    background-color: #fff7f7;
+  
+}
+footer {
+    background-color:#08ffc8;
+}
+header {
+    background-color: #204969;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+main{min-height:100vh;}

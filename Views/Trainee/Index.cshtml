@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Trainee>
+    <h1 class='text-success text-center mb-1'>Trainees</h1>
+    <a class='btn btn-success mb-2' asp-controller='Trainee' asp-action='AddNewTrainee'>Add New Trainee</a>
+   <div >
+        <table class='table table-bordered table-hover'>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Department</th>
+            <th>Details</th>
+
+        </tr>
+        @foreach (Trainee trainee in Model)
+        {
+            <tr>
+                <td>@trainee.Id</td>
+                <td>@trainee.Name</td>
+                <td>@trainee.Address</td>
+                <td>@trainee.Department.Name</td>
+                <td><a href='/Trainee/TraineeResult/@trainee.Id'>Details</a></td>
+
+            </tr>
+        }
+
+    </table>
+
+    
+   </div>
