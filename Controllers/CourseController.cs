@@ -109,6 +109,7 @@ namespace Day2.Controllers
                 Id = course.Id,
                 Degree = course.Degree,
                 MinDegree = course.MinDegree,
+                Dept_Id= course.Department.Id,
                 Department = new DepartmentInfoDTO
                 {
                     Id=course.Department.Id,
@@ -122,9 +123,35 @@ namespace Day2.Controllers
 
         public IActionResult Update(CourseInfoDTO courseInfoDTO)
         {
+            
+            if (!ModelState.IsValid)
+            {
+                ViewData["Deparments"] = GetDepartmentInfoDTOs();
+               return  View("Update", courseInfoDTO);
+
+            }
+
+            if (courseInfoDTO.Dept_Id == 0)
+            {
+                ModelState.AddModelError("Dept_Id", "*Select Department");
+                ViewData["Deparments"] = GetDepartmentInfoDTOs();
+                return View("Update", courseInfoDTO);
+            }
+
+            Course course = context.Courses.Include(cr => cr.Department).FirstOrDefault(cr => cr.Id == courseInfoDTO.Id);
+
+            if(course!=null)
+            {
+                course.Name = courseInfoDTO.Name;
+                course.MinDegree = courseInfoDTO.MinDegree;
+                course.Degree = courseInfoDTO.Degree;
+                course.Dept_Id = courseInfoDTO.Dept_Id;
+                context.SaveChanges();
 
 
-            return View("Index");
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }
